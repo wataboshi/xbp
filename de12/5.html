@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+
+    <title>第5回🌺ページ</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <style>h1 {
+        position: relative;
+        padding: 0.5em;
+        background: #a6d3c8;
+        color: white;
+      }
+      
+      h1::before {
+        position: absolute;
+        content: '';
+        top: 100%;
+        left: 0;
+        border: none;
+        border-bottom: solid 15px transparent;
+        border-right: solid 20px rgb(149, 158, 155);
+      }</style>
+      <style>h2 {
+        position: relative;
+        color: #158b2b;
+        font-size: 20px;
+        padding: 10px 0;
+        text-align: center;
+        margin: 1.5em 0;
+      }
+      h2:before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        width: 150px;
+        height: 58px;
+        border-radius: 50%;
+        border: 5px solid #a6ddb0;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+      }</style>
+      <style>h3 {
+        padding: 0.25em 0.5em;/*上下 左右の余白*/
+        color: #494949;/*文字色*/
+        background: transparent;/*背景透明に*/
+        border-left: solid 5px #7db4e6;/*左線*/
+      }</style>
+    <title>〇〇のテストページ</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <center><p><h1>第5回　python</h1></p></center>
+    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
+    <div>
+         <!-- ①↓に文字を書いてみよう -->
+
+        <center><p><h2>今回はpythonで様々なプログラムを作成しました。</h2></p></center>
+        <p>
+            <center><p>今回作ったのは旅行を計画する際の「あったらいいな」です。<br>
+                Pinterestで様々な画像を見ているときに「ここいいな。行きたい！」と思ったことはありませんか？<br>
+                でもPinterestには検索機能がないので、それがどこなのか分からないですよね。<br>
+                そこでGoogleの画像検索機能を使い、場所を特定します。<br>
+                次に分かったその場所の周辺の観光スポットを検索します。ここではInstagramを使います。<br>
+                最後に宿の検索を行います。ここではbooking.comを使います。<br>
+                場所・チェックイン日・チェックアウト日・人数・部屋数を入力することにより、あなたにぴったりの宿を教えてくれます。<br>
+                これで旅の準備は完璧！このプログラムさえあれば、行きたいと思った場所にすぐにでも出発できます！<br>
+            </p></center>
+        
+       <div class="sample_box6">
+       <p>
+        <center><p><h2>Google画像検索のコード</h2></p></center>
+        <center><p><h4>※画像を挿入し、検索することはできるのですが、ダイレクト検索が出来ず、検索画面になってしまいます。</h4></p></center>
+        <p><!DOCTYPE html>
+          <html>
+          <body>
+              <pre>
+                  <code><div class="sample_box6">
+                    <p>
+                        import kivy
+                        from kivy.app import App
+                        from kivy.uix.boxlayout import BoxLayout
+                        from kivy.uix.button import Button
+                        from kivy.uix.label import Label
+                        from kivy.core.window import Window
+                        import webbrowser
+                        import os
+                        
+                        kivy.require('2.2.1')  # Kivyのバージョンを修正
+                        
+                        class ImageSearchApp(App):
+                            def __init__(self, **kwargs):
+                                super().__init__(**kwargs)
+                                self.image_path = None
+                        
+                            def build(self):
+                                self.layout = BoxLayout(orientation='vertical')
+                                self.image_drop_box = DropImageBox()
+                                self.search_button = Button(text='Search Image')
+                                self.search_button.bind(on_press=self.search_image)
+                        
+                                self.layout.add_widget(self.image_drop_box)
+                                self.layout.add_widget(self.search_button)
+                                return self.layout
+                        
+                            def search_image(self, instance):
+                                if self.image_drop_box.image_path:
+                                    image_path = self.image_drop_box.image_path
+                        
+                                    # 画像のURLをそのまま使用して検索
+                                    search_url = f'https://www.google.com/searchbyimage?image_url=file://{image_path}'
+                                    webbrowser.open(search_url)
+                        
+                        class DropImageBox(BoxLayout):
+                            def __init__(self, **kwargs):
+                                super().__init__(**kwargs)
+                                self.orientation = 'vertical'
+                                self.spacing = 10
+                        
+                                self.label = Label(text='Drag and drop an image here')
+                                self.image_path = None
+                        
+                                self.add_widget(self.label)
+                                Window.bind(on_drop_file=self._on_drop_file)
+                        
+                            def _on_drop_file(self, window, file_path, *args):
+                                try:
+                                    self.image_path = file_path.decode('utf-8')
+                                    self.label.text = f'Image Path: {self.image_path}'
+                                except Exception as e:
+                                    print(f"Exception in _on_drop_file: {e}")
+                        
+                        if __name__ == '__main__':
+                            app = ImageSearchApp()
+                            app.run()                        
+                  </code>
+              </pre>
+          </body>
+          </html>
+          </p>
+        </p>
+      </div>
+      <div class="video"><iframe width="315" height="560" src="https://www.youtube.com/embed/5Hg5om9YfZw" title="2024年1月16日" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>実際にやってみたときの動画</iframe></div><br>>
+      <div class="sample_box6">
+        <p>
+         <center><p><h2>Instagramでの周辺スポット検索のコード</h2></p></center>
+         <p><!DOCTYPE html>
+           <html>
+           <body>
+               <pre>
+                   <code><div class="sample_box6">
+                     <p>
+                        import japanize_kivy
+                        import urllib.parse
+                        import kivy
+                        from kivy.app import App
+                        from kivy.uix.boxlayout import BoxLayout
+                        from kivy.uix.textinput import TextInput
+                        from kivy.uix.button import Button
+                        import webbrowser
+                        kivy.require('1.11.1')
+                        
+                        class HashTagSearchApp(App):
+                            def __init__(self, **kwargs):
+                                super().__init__(**kwargs)
+                                self.hashtags = []
+                        
+                            def build(self):
+                                self.layout = BoxLayout(orientation='vertical')
+                                self.input_text = TextInput(hint_text='enter a hashtag without "#"')
+                                self.add_button = Button(text='search')
+                                self.add_button.bind(on_press=self.search_hashtag)
+                                self.layout.add_widget(self.input_text)
+                                self.layout.add_widget(self.add_button)
+                                return self.layout
+                        
+                           
+                        
+                            def search_hashtag(self, instance):
+                                hashtag = self.input_text.text.strip()
+                                if hashtag:
+                                    self.hashtags.append(hashtag)
+                                    hashtag = urllib.parse.quote(hashtag)  # キーワードをエンコード
+                                    search_url = f'https://www.instagram.com/explore/tags/{hashtag}/'
+                                    webbrowser.open(search_url)
+                        
+                                    # ウィンドウを閉じないようにするためのカスタムロジックを追加
+                                    pass
+                        
+                        
+                        if __name__ == '__main__':
+                            app = HashTagSearchApp()
+                            app.run()
+                   </code>
+               </pre>
+           </body>
+           </html>
+           </p>
+         </p>
+       </div>
+       <div class="video"><iframe width="315" height="560" src="https://www.youtube.com/embed/5cKS_-4bhiY" title="2024年1月16日" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>実際にやってみたときの動画</iframe></div>
+       <div class="sample_box6">
+        <p>
+         <center><p><h2>booking.comでの宿検索のコード</h2></p></center>
+         <p><!DOCTYPE html>
+           <html>
+           <body>
+               <pre>
+                   <code><div class="sample_box6">
+                     <p>
+                        import japanize_kivy
+                        import urllib.parse
+                        import kivy
+                        from kivy.app import App
+                        from kivy.uix.boxlayout import BoxLayout
+                        from kivy.uix.textinput import TextInput
+                        from kivy.uix.button import Button
+                        import webbrowser
+                        
+                        kivy.require('1.11.1')
+                        
+                        class HotelSearchApp(App):
+                            def __init__(self, **kwargs):
+                                super().__init__(**kwargs)
+                        
+                            def build(self):
+                                self.layout = BoxLayout(orientation='vertical')
+                                self.location_input = TextInput(hint_text='目的地を入力してください')
+                                self.check_in_input = TextInput(hint_text='チェックイン日（例: 2023-11-04）')
+                                self.check_out_input = TextInput(hint_text='チェックアウト日（例: 2023-11-07）')
+                                self.guests_input = TextInput(hint_text='宿泊人数')
+                                self.rooms_input = TextInput(hint_text='部屋数')
+                                self.search_button = Button(text='検索')
+                                self.search_button.bind(on_press=self.search_hotels)
+                        
+                                self.layout.add_widget(self.location_input)
+                                self.layout.add_widget(self.check_in_input)
+                                self.layout.add_widget(self.check_out_input)
+                                self.layout.add_widget(self.guests_input)
+                                self.layout.add_widget(self.rooms_input)
+                                self.layout.add_widget(self.search_button)
+                        
+                                return self.layout
+                        
+                            def search_hotels(self, instance):
+                                location = self.location_input.text.strip()
+                                check_in_date = self.check_in_input.text.strip()
+                                check_out_date = self.check_out_input.text.strip()
+                                guests = self.guests_input.text.strip()
+                                rooms = self.rooms_input.text.strip()
+                        
+                                if location and check_in_date and check_out_date:
+                                    # 実際の宿泊サイトのURLに合わせて調整
+                                    # 以下はBooking.comの例
+                                    base_url = 'https://www.booking.com/search.html'
+                                    query_parameters = {
+                                        'ss': location,
+                                        'checkin_monthday': check_in_date.split('-')[2],
+                                        'checkin_year_month': f'{check_in_date.split("-")[0]}-{check_in_date.split("-")[1]}',
+                                        'checkout_monthday': check_out_date.split('-')[2],
+                                        'checkout_year_month': f'{check_out_date.split("-")[0]}-{check_out_date.split("-")[1]}',
+                                        'group_adults': guests,
+                                        'no_rooms': rooms,
+                                    }
+                                    query_string = urllib.parse.urlencode(query_parameters)
+                                    search_url = f'{base_url}?{query_string}'
+                                    webbrowser.open(search_url)
+                        
+                        if __name__ == '__main__':
+                            app = HotelSearchApp()
+                            app.run()
+                   </code>
+               </pre>
+           </body>
+           </html>
+           </p>
+         </p>
+       </div>
+       <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/0zGQ9a6Xd-4?si=ogfnPAjKb7XnHmtp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>実際にやってみたときの動画</iframe></div>
+
+         <!-- ②↓に画像（imagesフォルダにあるtest.png）を挿入してみよう -->
+
+         <!-- ③↓に箇条書きをしてみよう -->
+
+         <!-- ④↓に外部リンクを作ってみよう -->
+
+    </div>
+
+</body>
+</html>
