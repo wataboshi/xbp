@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+
+    <title>第8回🌷ページ</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <style>h1 {
+        position: relative;
+        padding: 0.5em;
+        background: #a6d3c8;
+        color: white;
+      }
+      
+      h1::before {
+        position: absolute;
+        content: '';
+        top: 100%;
+        left: 0;
+        border: none;
+        border-bottom: solid 15px transparent;
+        border-right: solid 20px rgb(149, 158, 155);
+      }</style>
+      <style>h2 {
+        position: relative;
+        color: #158b2b;
+        font-size: 20px;
+        padding: 10px 0;
+        text-align: center;
+        margin: 1.5em 0;
+      }
+      h2:before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        width: 150px;
+        height: 58px;
+        border-radius: 50%;
+        border: 5px solid #a6ddb0;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+      }</style>
+      <style>h3 {
+        padding: 0.25em 0.5em;/*上下 左右の余白*/
+        color: #494949;/*文字色*/
+        background: transparent;/*背景透明に*/
+        border-left: solid 5px #7db4e6;/*左線*/
+      }</style>
+    <title>〇〇のテストページ</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <center><p><h1>第８回　データサイエンス</h1></p></center>
+    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
+    <div>
+         <!-- ①↓に文字を書いてみよう -->
+
+        <center><p><h2>今回は熱帯夜や気温について昔と現在を比較分析しました。</h2></p></center>
+        <p>
+            <center><p><h4>
+                今回は元々熱帯夜の記録についての記事を発見し、現在では当たり前のような記録であったことから、<br>
+                現在と今では違いが出るのではないかと考え調べてみることにしました。<br>
+                しかし結論から言ってしまうと大きく違ったのは熱帯夜や記録に関することではなく、地球温暖化についてでした。<br>
+                調べてみると地球温暖化は1970年代に科学者の間で深刻な問題として注目されるようになり、<br>
+                1985年にオーストリアで行われたフィラハ会議をきっかけに、<br>
+                二酸化炭素による地球温暖化問題が大きく取り上げられるようになったことがわかりました。<br>
+            </h4></p></center>
+        </p>   
+
+         <center><p><h2>調査方法</h2></p></center>
+         <p>
+            <center><p><h4>
+                今回は神奈川大学図書館のデータベースサービスを使用し、朝日新聞クロスサーチからデータを取ってきました。<br>
+                「熱帯夜」や「熱帯夜 AND 気温」などで検索し、その中からさらに記録などに関する記事をピックアップし使用しました。
+            </h4></p></center>
+         </p>
+       <div class="sample_box6">
+       <p>
+        <center><p><h2>共起ネットワーク</h2></p></center>
+        <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>sample</title>
+  <style>
+    .pic_frame {
+      display: inline-block;
+      text-align: center;
+    }
+
+    table {
+      text-align: center;
+    }
+  </style>
+  </head>
+<body>
+  <div class="pic_frame">
+    <img src="./images/共起ネットワーク　新.png" alt="写真" align="left" width="66%">
+    <p><h4>
+        1985年以降<br>
+        多いのは「猛暑」や「暑い」などですが、<br>
+        黄緑の部分を見ると現在ならではのワードである「温暖」や「ヒートアイランド」といった言葉を見つけることが出来ます。
+        <br clear="left">
+    </h4></p> 
+  </div>
+  <div class="pic_frame">
+    <img src="./images/共起ネットワーク　旧.png" alt="写真" align="left" width="66%">
+    <p><h4>
+        1984年以前<br>
+        この時代は記録を塗り替えたという記事が多く、「今年」や「平均」といったワードが関連でつながっています。<br>
+        また「熱帯夜」や「真夏日」といったワードが使われ始めた時代なので、関連で「気象庁」な多く使われています。<br>
+        <br clear="left">
+    </h4></p>
+  </div>
+  <br><br>
+</body>
+</html>
+
+    <center><p><h2>単語頻出</h2></p></center>
+    <img src="./images/単語　新.png" width="48%"> <img src="./images/単語　旧.png" width="48%"><br>
+    <p>
+        <center><p><h4>
+            このグラフからも現代の気温上昇に地球温暖化が関係していることが分かります。<br>
+            また昔では上位に来ている「熱帯夜」というワードが現代ではほとんど使用されていません。<br>
+            現代では「熱帯夜」は当たり前でほとんど報道しない印象です。<br>
+            また「猛暑」というワードが上位に来るのも現代ならではだと思います。<br>
+            昔は「真夏日」などが多く使われていましたが、現代ではそれ言葉で表すことが出来ないほど暑くなっており、<br>
+            「猛暑」はもちろん「酷暑」なども使われていました。<br>
+        </h4></p></center>
+
+    <center><p><h2>サンバースト</h2></p></center>
+    <img src="./images/サンバースト　新.png" width="48%"> <img src="./images/サンバースト詳細　新.png" width="48%"><br>
+    <p>
+        <center><p><h4>
+            こちらは1985年以降のサンバーストグラフとその一部を拡大したものです。<br>
+            ここでも地球温暖化やヒートアイランド現象で一つのコーナーができるような量があります。<br>
+            ここ数十年でどれほど言われるようになったかがよくわかります。<br>
+        </h4></p></center>
+    </p>
+    <img src="./images/サンバースト　旧.png" width="48%"> <img src="./images/サンバースト詳細　旧.png" width="48%"><br>
+    <p>
+        <center><p><h4>
+            こちらは1984年以前のサンバーストグラフとその一部を拡大したものです。<br>
+            こちらは「暑さ」や「高気圧」など気象系の情報はあるものの、やはり地球温暖化の「地」の字もありません。<br>
+            一方どちらも「記録」や「最高」などのワードは多いので、昔も今も記録を更新し続けていることがわかります。<br>
+            ここからもいかに地球温暖化が数sンでいるかが分かると思います。<br>
+        </h4></p></center>
+    </p>
+    
+    </div>
+    <center><p><h2>まとめ</h2></p></center>
+    <p>
+        <center><p><h4>
+            今回の分析では当初のもくろみとは全く違う結果になったが、現代の問題が浮き彫りになる面白い結果になった。<br>
+            また調査している中で、「真夏日」「猛暑」の定義が変化していると知った。<br>
+            これは年々上昇している気温に対応した結果であり、今までの定義では表しきれないほどの気温が日常的に記録された結果だといえる。<br>
+            今回の見出したちのように「記録更新」などと書いていると、なぜか「すごい」といった良いイメージになってしまうが、<br>
+            それらに騙されることなく、この異常な気象の現状を理解し、危機感を持つことが大切であると感じた。<br>
+            正直私も、結果を見るまで地球温暖化が出てくるとは思いもしなかったので、平和ボケした一人なのだと感じ反省している。<br>
+        </h4></p></center>
+    </p>   
+
+</body>
+</html>

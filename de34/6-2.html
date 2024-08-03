@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+
+    <title>プロジェクトノート</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <style>h1 {
+        position: relative;
+        padding: 0.5em;
+        background: #a6d3c8;
+        color: white;
+      }
+      
+      h1::before {
+        position: absolute;
+        content: '';
+        top: 100%;
+        left: 0;
+        border: none;
+        border-bottom: solid 15px transparent;
+        border-right: solid 20px rgb(149, 158, 155);
+      }</style>
+      <style>h2 {
+        position: relative;
+        color: #158b2b;
+        font-size: 20px;
+        padding: 10px 0;
+        text-align: center;
+        margin: 1.5em 0;
+      }
+      h2:before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        width: 150px;
+        height: 58px;
+        border-radius: 50%;
+        border: 5px solid #a6ddb0;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+      }</style>
+      <style>h3 {
+        padding: 0.25em 0.5em;/*上下 左右の余白*/
+        color: #494949;/*文字色*/
+        background: transparent;/*背景透明に*/
+        border-left: solid 5px #7db4e6;/*左線*/
+      }</style>
+    <title>〇〇のテストページ</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <center><p><h1>プロジェクトノート</h1></p></center>
+    <div>
+
+      更新：7月21日<br>
+      メンバー：<br>
+      ・<a href="https://wataboshi.github.io/xbp/de34/">HANA</a>
+      ・<a href="https://suzytsuna.github.io/xbp/de34/">ツナ</a>
+      ・<a href="https://ayana-7.github.io/xbp/de34/">ayana-7</a>
+      ・<a href="https://miyayui.github.io/xbp/de34/">miyayui</a>
+      <h1>＜ミスト付日傘＞</h1>
+  </div>
+  <div class="container">
+      <div class="image">
+          <h2>Image</h2>
+          ,<center><img src="./images/イメージ.jpg" width="30%" alt="傘"></center>
+      </div>
+      <div class="text">
+          <h2>概要</h2>
+          日傘にミストをつける<br>
+          日差しを遮り暑さをしのぐだけでなく、ミストでさらに涼しくなる！<br>
+          暑い夏を快適に過ごせる日傘！
+      </div>
+  </div>
+  <div>
+      <h1>＜プロセスメモ＞</h1>
+      <p>
+      ■　⇒考えること、疑問点など<br>
+      ●　⇒具体的なやること<br>
+      ▶　⇒やったこと
+      </p>
+  </div>
+  <div>
+      ＜プログラミング＞
+      <p>
+          ■温度センサーのプログラミング<br>
+          ●温度センサーを使って温度を測定できるようにプログラムする<br>
+          ▶プログラム完成<br>
+      </p>
+      <h2>ソースコード</h2>
+      <div style="border: 1px solid #F0F0F0; width: 90%; height: 160px; overflow: auto;">
+          <p>// TMP36の出力ピンを接続したアナログピンの定義<br>
+           const int sensorPin = A0;<br>
+          
+              void setup() {<br>
+            // シリアル通信の初期化<br>
+            Serial.begin(9600);<br>
+           }<br>
+          
+              void loop() {<br>
+            // アナログ入力を読み取る<br>
+            int sensorValue = analogRead(sensorPin);<br>
+           
+            // 読み取った値を電圧（mV）に変換<br>
+            float voltage = sensorValue * (5000.0 / 1023.0);<br>
+           
+            // 電圧を温度（摂氏）に変換<br>
+            float temperatureC = (voltage - 600) / 10;<br>
+           
+            // 温度をシリアルモニタに出力<br>
+            Serial.print("Temperature: ");<br>
+            Serial.print(temperatureC);<br>
+            Serial.println(" C");<br>
+           
+            // 1秒待機<br>
+            delay(1000);<br>
+          }</p>
+      </div>
+      <p>
+          ■温度センサーで一定の高い温度を測定したら、ミストを作動させるプログラミング<br>
+          ●ミストが作動するようにプログラミングする<br>
+          ▶リレーモジュールを使用してミスト生成機を制御した<br>
+          ▶プログラミング完成
+      </p>
+      <div style="border: 1px solid #F0F0F0; width: 90%; height: 160px; overflow: auto;">
+          <p>
+              // リレーの制御ピンを定義<br>
+           const int relayPin = 7;<br>
+           void setup() {<br>
+              // リレーの制御ピンを出力モードに設定<br>
+              pinMode(relayPin, OUTPUT);<br>
+              // 初期状態としてリレーをオフにする<br>
+              digitalWrite(relayPin, LOW);<br>
+              }<br><br>
+  
+           void loop() {<br>
+           // リレーをオンにする<br>
+              digitalWrite(relayPin, HIGH);<br>
+           // 5秒待つ<br>
+           delay(5000);<br>
+              // リレーをオフにする<br>
+           digitalWrite(relayPin, LOW);<br>
+              // 5秒待つ<br>
+           delay(5000);<br>
+           }<br>
+          </p>
+      </div>
+      <p>
+          ●温度センサーにIFのプログラミングをする<br>
+          ▶27度以上になるとリレーモジュールをONにしてミストを作動させるプログラム完成
+      </p>
+      <div style="border: 1px solid #F0F0F0; width: 90%; height: 160px; overflow: auto;">
+          <p>
+              // リレーの制御ピンを定義<br>
+              const int relayPin = 7;<br>
+              // 温度センサーの入力ピンを定義<br>
+              const int tempSensorPin = A0;<br>
+              
+              // 温度の閾値を定義（摂氏温度）<br>
+              const float thresholdTemp = 27.0;<br>
+              
+              void setup() {<br>
+                // リレーの制御ピンを出力モードに設定<br>
+                pinMode(relayPin, OUTPUT);<br>
+                // 初期状態としてリレーをオフにする<br>
+                digitalWrite(relayPin, LOW);<br>
+                // シリアル通信を開始<br>
+                Serial.begin(9600);<br>
+              }<br>
+              
+              void loop() {<br>
+                // 温度センサーの値を読み取る<br>
+                int sensorValue = analogRead(tempSensorPin);<br>
+                // 電圧に変換（Arduinoの3.3V基準で）<br>
+                float voltage = sensorValue * (5000.0 / 1023.0);<br>
+                // 温度に変換（LM35は10mV/°C）<br>
+                float temperature = (voltage-600)/10;<br>
+               
+                // シリアルモニタに温度を出力<br>
+                Serial.print("Temperature: ");<br>
+                Serial.print(temperature);<br>
+                Serial.println(" °C");<br>
+              
+                // 温度が閾値を超えたらリレーをオンにする<br>
+                if (temperature > thresholdTemp) {<br>
+                  digitalWrite(relayPin, HIGH);<br>
+                } else {<br>
+                  // 温度が閾値以下ならリレーをオフにする<br>
+                  digitalWrite(relayPin, LOW);<br>
+                }<br>
+              
+                // 1秒待つ<br>
+                delay(1000);<br>
+              }<br>
+          </p>
+      </div>
+  </div>
+  <div>
+      ＜外観＞<br>
+      <p>
+          ■ペットボトルの付け方<br>
+          ●広げたときは骨に密着するように、たたんだときはずらせるようにする<br>
+      </p>
+      <p>
+          ■ミスト生成機をつける
+          ●傘の先端につける
+      </p>
+      <p>
+          ▶ミストは傘の先端部分に<br>
+          ▶水はソース容器とホース、それぞれのミスト生成機に水が行くように作ったもので全体に行くようにする
+      </p>
+  </div>
+  <div>
+      ＜動作＞
+      <p>
+          ■水からミストにする<br>
+          ●ミストにする機械を購入する<br>
+          ▶ミスト生成機を購入して、動作と構造の確認<br>
+          <img src="./images/ミスト.jpg" width="20%">
+      </p>
+      <p>
+          ■温度センサーで温度を感知しミストを作動させるにはどうしたらいいか<br>
+          ●ミスト生成機と温度センサーを連動させる
+          ▶完成
+      </p>
+      <p>
+          ■ペットボトルの水を吸い上げてミスト生成機に水を送る装置<br>
+          ●プロペラを作る<br>
+          ●水を吸い上げる装置を作る<br>
+          ▶完成<br>
+      </p>
+  </div>
+  <div>
+      ＜IoT＞
+      <p>
+          ■温度センサーで取得した気温のデータを「dfLink」でグラフ化し、LINEと連携させて「例：27度以上が30分続いたらLINEで、水分補給をうながしたり休憩を取るよう注意を出したりする」などができるようにする<br>
+          ●温度センサーで感知した温度をdfLinkでグラフ化する<br>
+          ▶完成<br>
+          <img src="./images/ソース.jpg" width="30%">
+          <img src="./images/データ.jpg" width="35%"><br>
+          ●dfLinkとLINEの連携を行い、注意報などを送れるようにする（未完成）<br>
+      </p>
+  </div>
+  <div>
+      <h2>使用したもの</h2>
+      ・温度センサー・日傘・ペットボトル・ミストモジュール<br>
+      ・電子ワイヤー・ホース・3Dプリンタで作成したプロペラ<br>
+      ・リレー回路・ステッピングモーター・アルディーノ<br>
+      ・3Dプリンタで作成した分岐点・ミスト取り付け部分<br>
+      <h2>紹介動画</h2>
+  </div>
+  <center><div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/bmVeqr9f5TA?si=VZK0gnYck9iNYxCy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center></div>
+  </body>
+  </html>
